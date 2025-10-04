@@ -1,0 +1,32 @@
+services:
+  cnn-jupyter:
+    image: osd-cnn:universal
+    container_name: osd-cnn
+    ports:
+      - "8888:8888"
+    volumes:
+      # 挂载当前目录到容器的/app目录，实现代码同步
+      - .:/app
+      # 挂载数据目录，避免重复下载数据集
+      - ./data:/app/data
+      # 挂载模型保存目录
+      - ./models:/app/models
+      # 挂载notebooks目录
+      - ./notebooks:/app/notebooks
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    restart: unless-stopped
+    # 资源限制（可选）
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+    # 健康检查
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
