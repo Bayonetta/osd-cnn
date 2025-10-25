@@ -7,6 +7,9 @@ seaborn
 scikit-learn
 pandas
 
+# LDPC码相关
+pyldpc
+
 # Jupyter相关
 jupyter
 jupyterlab
