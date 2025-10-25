@@ -1,0 +1,20 @@
+# 核心依赖
+torch
+torchvision
+numpy
+matplotlib
+seaborn
+scikit-learn
+pandas
+
+# LDPC码相关
+pyldpc
+
+# Jupyter相关
+jupyter
+jupyterlab
+ipywidgets
+
+# 其他工具
+tqdm
+Pillow
